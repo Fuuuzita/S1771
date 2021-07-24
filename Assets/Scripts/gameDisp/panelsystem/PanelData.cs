@@ -14,7 +14,7 @@ static public class PanelData
     //数字パターンスタック
     public static int[] numPatStack = new int[speedPatTableNum];
     //現在動作パターン
-    public static int speed_numPatNowPos = 0;
+    public static int speed_numPatNowPos = -1; //★★初期値-1だとバグる可能性があるので要検討
     //現在数字パターン
     public static int numPatStackNowPos = 0;
     // パネル数字選択のスタック
@@ -79,7 +79,7 @@ static public class PanelData
     //現在動作パターンクリア処理
     public static void Clearspeed_numPatNowPos()
     {
-        speed_numPatNowPos = 0;
+        speed_numPatNowPos = -1;
     }
 
     //現在動作パターン-角度取得処理
@@ -117,7 +117,7 @@ static public class PanelData
             speedPatStack[iLoop] = -1;
             numPatStack[iLoop] = -1;
         }
-        speed_numPatNowPos = 0;
+        speed_numPatNowPos = -1;
     }
 
     //PanelData作成処理

@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 663711900}
   - component: {fileID: 663711898}
   - component: {fileID: 663711901}
+  - component: {fileID: 663711902}
   m_Layer: 0
   m_Name: PanelMain
   m_TagString: Untagged
@@ -744,16 +745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3de1695327d9c2a44b4f6fefa9d60ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newPrefab0: {fileID: 5183033949034105410, guid: 27dc924619c36d04193b23f2829762a0, type: 3}
-  newPrefab1: {fileID: 5445226278394734420, guid: 2aa42cbd6c1f3e7449b2c622617f8bbf, type: 3}
-  newPrefab2: {fileID: 5035313704490057403, guid: 21894088e2da55d4fb7714b2822fde2f, type: 3}
-  newPrefab3: {fileID: 3456869518565451578, guid: 40b05eef553320d4980ed004132216a5, type: 3}
-  newPrefab4: {fileID: 2230723392913182726, guid: 38f138d9bdedbd847be5850c50975064, type: 3}
-  newPrefab5: {fileID: 8221014577634817914, guid: 627ea1a6e3b8e0a439855ae2ae2ec3ff, type: 3}
-  newPrefab6: {fileID: 3711779948403232686, guid: 606cb5456a5681b468f7caf2e33587dc, type: 3}
-  newPrefab7: {fileID: 3107255106889807718, guid: 3d1b52b7ef14abd469633e00470f43b6, type: 3}
-  newPrefab8: {fileID: 6745868617773381304, guid: 635caae8d9f56d043af2b787ef359792, type: 3}
-  newPrefab9: {fileID: 7634343084384083964, guid: 8bf2a8280a4f1d648a55eec4f13da558, type: 3}
   QuizText: {fileID: 1699732040}
 --- !u!114 &663711901
 MonoBehaviour:
@@ -771,6 +762,30 @@ MonoBehaviour:
   AnsPanel2NAME: AnsPanel2
   AnsPanel3NAME: AnsPanel3
   AnsPanel4NAME: AnsPanel4
+  positive: {fileID: 8707757282796282840, guid: 5ebd4e38c4394144bb9b3dbaf1894847, type: 3}
+  negative: {fileID: 2540370966800377866, guid: 7407413c46384d74495a667194151ad5, type: 3}
+--- !u!114 &663711902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663711897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0eb06bdf94e515489e6cf3d6851f92e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newPrefab0: {fileID: 5183033949034105410, guid: 27dc924619c36d04193b23f2829762a0, type: 3}
+  newPrefab1: {fileID: 5445226278394734420, guid: 2aa42cbd6c1f3e7449b2c622617f8bbf, type: 3}
+  newPrefab2: {fileID: 5035313704490057403, guid: 21894088e2da55d4fb7714b2822fde2f, type: 3}
+  newPrefab3: {fileID: 3456869518565451578, guid: 40b05eef553320d4980ed004132216a5, type: 3}
+  newPrefab4: {fileID: 2230723392913182726, guid: 38f138d9bdedbd847be5850c50975064, type: 3}
+  newPrefab5: {fileID: 8221014577634817914, guid: 627ea1a6e3b8e0a439855ae2ae2ec3ff, type: 3}
+  newPrefab6: {fileID: 3711779948403232686, guid: 606cb5456a5681b468f7caf2e33587dc, type: 3}
+  newPrefab7: {fileID: 3107255106889807718, guid: 3d1b52b7ef14abd469633e00470f43b6, type: 3}
+  newPrefab8: {fileID: 6745868617773381304, guid: 635caae8d9f56d043af2b787ef359792, type: 3}
+  newPrefab9: {fileID: 7634343084384083964, guid: 8bf2a8280a4f1d648a55eec4f13da558, type: 3}
 --- !u!1 &1176198640
 GameObject:
   m_ObjectHideFlags: 0

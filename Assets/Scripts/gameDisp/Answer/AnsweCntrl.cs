@@ -21,17 +21,20 @@ public class AnsweCntrl : MonoBehaviour
     private bool OverFlg = false;
     private Sprite sprite1;
     private SpriteRenderer spRenderer;
-    private int AnswerPos;      //‚±‚½‚¦‚ÌˆÊ’u
     private int AnswerNum;      //‚±‚½‚¦
 
     // Start is called before the first frame update
     void Start()
     {
-        sprite1 = Resources.Load<Sprite>("Waku0");
+    }
+
+    public void AnsweCntrlInit()
+    {
+        spRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spRenderer.sprite = AnsPanelNULL;
         ChangeFlg = false;
         OverFlg = false;
         AnswerNum = 0;
-        spRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // FixedUpdate is called once per frame

@@ -16,8 +16,12 @@ public class AnswerTouchEvent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NotifyFlag = false;
 
+    }
+
+    public void AnswerTouchEventInit()
+    {
+        NotifyFlag = false;
     }
 
     // FixedUpdate is called once per frame

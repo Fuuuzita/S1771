@@ -16,6 +16,8 @@ public class MovePanelConf : MonoBehaviour
     public GameObject MainObjctl;
     bool OnlyOnecetime = true;   //一度しかタッチできない
     bool touchFlg = false;       //タッチ検出用
+    bool delFlg = false;         //削除フラグ
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +50,15 @@ public class MovePanelConf : MonoBehaviour
                 AnswerBuffer.answerBuffPush(num);
                 MainObjctl.SendMessage("PanelTouchNotification");
                 OnlyOnecetime = false;
+                //削除フラグを設定
+                delFlg = true;
             }
+        }
+
+        if(delFlg)
+        {
+            // 自分自身を消す
+            Destroy(gameObject);
         }
     }
 
@@ -56,6 +66,11 @@ public class MovePanelConf : MonoBehaviour
     {
         Debug.Log("【TachtEvent_PushStacks】num:"+ num);
         touchFlg = true;
+    }
+
+    public void Panel_del_notification()
+    {
+        delFlg = true;
     }
 }
  
