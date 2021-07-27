@@ -33,6 +33,10 @@ public class CheckAnswerCtrl : MonoBehaviour
         AnsPanelObjctl2.GetComponent<AnsweCntrl>().AnsweCntrlInit();
         AnsPanelObjctl3.GetComponent<AnsweCntrl>().AnsweCntrlInit();
         AnsPanelObjctl4.GetComponent<AnsweCntrl>().AnsweCntrlInit();
+
+        //12秒後にはすべて消す
+        Invoke("CheckAnswerCtrlTimeup", 25);
+
     }
 
     // FixedUpdate is called once per frame
@@ -40,53 +44,7 @@ public class CheckAnswerCtrl : MonoBehaviour
     {
         if (ChekNotifyFlg)
         {
-            int AnsPanel1;  //こたえ1
-            int AnsPanel2;  //こたえ2
-            int AnsPanel3;  //こたえ3
-            int AnsPanel4;  //こたえ4
-            int Answer1;     //解答1
-            int Answer2;     //解答2
-            int Answer3;     //解答3
-            int Answer4;     //解答4
-            Vector3 newPos = this.transform.position;
-            GameObject newGameObject;
-
-            //こたえと解答を取得して比較する
-            //こたえを取得
-            AnsPanel1 = AnsPanelObjctl1.GetComponent<AnsweCntrl>().GetAnswerPanelNum();
-            AnsPanel2 = AnsPanelObjctl2.GetComponent<AnsweCntrl>().GetAnswerPanelNum();
-            AnsPanel3 = AnsPanelObjctl3.GetComponent<AnsweCntrl>().GetAnswerPanelNum();
-            AnsPanel4 = AnsPanelObjctl4.GetComponent<AnsweCntrl>().GetAnswerPanelNum();
-            //解答を取得
-            Answer1 = int.Parse(quizData.GetquizDataBuf(1));
-            Answer2 = int.Parse(quizData.GetquizDataBuf(2));
-            Answer3 = int.Parse(quizData.GetquizDataBuf(3));
-            Answer4 = int.Parse(quizData.GetquizDataBuf(4));
-
-            newPos.x = 0;
-            newPos.y = -3.5f;
-            newPos.z = -5; // 手前に表示
-            //チェック
-            if ((AnsPanel1 == Answer1)
-            && (AnsPanel2 == Answer2)
-            && (AnsPanel3 == Answer3)
-            && (AnsPanel4 == Answer4)
-            )
-            {
-                //正解を表示する処理
-                Debug.Log("正解");
-                newGameObject = Instantiate(positive) as GameObject;
-            }
-            else
-            {
-                //間違いを表示する処理
-                Debug.Log("不正解");
-                newGameObject = Instantiate(negative) as GameObject;
-            }
-            newGameObject.transform.position = newPos;
-            //チェックが終わったので、PanelとQuizとAnswerPanelに終わったことを伝える
-
-            ChekNotifyFlg = false;
+            CheckAnswerDispResult();
         }
     }
 
@@ -102,5 +60,67 @@ public class CheckAnswerCtrl : MonoBehaviour
         ChekNotifyFlg = false;
     }
 
+    public void CheckAnswerCtrlSetdelPanelFlg()
+    {
+        PanelData.SetdelPanelFlg();
+    }
 
+    public void CheckAnswerCtrlTimeup()
+    {
+        CheckAnswerDispResult();
+    }
+
+    void CheckAnswerDispResult()
+    {
+        int AnsPanel1;  //こたえ1
+        int AnsPanel2;  //こたえ2
+        int AnsPanel3;  //こたえ3
+        int AnsPanel4;  //こたえ4
+        int Answer1;     //解答1
+        int Answer2;     //解答2
+        int Answer3;     //解答3
+        int Answer4;     //解答4
+        Vector3 newPos = this.transform.position;
+        GameObject newGameObject;
+
+        //こたえと解答を取得して比較する
+        //こたえを取得
+        AnsPanel1 = AnsPanelObjctl1.GetComponent<AnsweCntrl>().GetAnswerPanelNum();
+        AnsPanel2 = AnsPanelObjctl2.GetComponent<AnsweCntrl>().GetAnswerPanelNum();
+        AnsPanel3 = AnsPanelObjctl3.GetComponent<AnsweCntrl>().GetAnswerPanelNum();
+        AnsPanel4 = AnsPanelObjctl4.GetComponent<AnsweCntrl>().GetAnswerPanelNum();
+        //解答を取得
+        Answer1 = int.Parse(quizData.GetquizDataBuf(1));
+        Answer2 = int.Parse(quizData.GetquizDataBuf(2));
+        Answer3 = int.Parse(quizData.GetquizDataBuf(3));
+        Answer4 = int.Parse(quizData.GetquizDataBuf(4));
+
+        newPos.x = 0;
+        newPos.y = -3.5f;
+        newPos.z = -5; // 手前に表示
+                       //チェック
+        if ((AnsPanel1 == Answer1)
+        && (AnsPanel2 == Answer2)
+        && (AnsPanel3 == Answer3)
+        && (AnsPanel4 == Answer4)
+        )
+        {
+            //正解を表示する処理
+            Debug.Log("正解");
+            newGameObject = Instantiate(positive) as GameObject;
+            //正解数を1進める
+            PositivePoint.NextCount();
+        }
+        else
+        {
+            //間違いを表示する処理
+            Debug.Log("不正解");
+            newGameObject = Instantiate(negative) as GameObject;
+        }
+        newGameObject.transform.position = newPos;
+        //チェックが終わったので、PanelとQuizとAnswerPanelに終わったことを伝える
+        CancelInvoke();
+        CheckAnswerCtrlSetdelPanelFlg();
+        ChekNotifyFlg = false;
+    }
 }

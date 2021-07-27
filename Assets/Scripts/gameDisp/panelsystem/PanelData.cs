@@ -21,6 +21,8 @@ static public class PanelData
     static int[] StackChosenAns = new int[speedPatTableNum];
     static int[] StackChosenPanel = new int[speedPatTableNum];
     static int[] Stackrandom11num4Ans = new int[speedPatTableNum];
+    // 1問終了時のパネル削除フラグ
+    static bool delPanelFlg = false;
 
     //定数
     public static readonly float[,] speedPatTable =
@@ -37,19 +39,6 @@ static public class PanelData
         {(float)((-3.14*5)/6),  (float)(4.75),   (float)(4.25) },
         {(float)((3.14*7)/8),   (float)(4.75),   (float)(2.25) },
         {(float)((3.14*2)/3),   (float)(4.75),   (float)(-1.05) }
-
-
-        //{(float)(3.14/3),       (float)0.1,(float)0},
-        //{(float)(3.14/8),       (float)0.2,(float)0},
-        //{(float)(-3.14/6),      (float)0.3,(float)0},
-        //{(float)(-3.14/4),      (float)0.4,(float)0},
-        //{(float)(-3.14/3),      (float)0.5,(float)0},
-        //{(float)(-3.14/2),      (float)0.6,(float)0},
-        //{(float)((-3.14*2)/3),  (float)0.7,(float)0},
-        //{(float)((-3.14*3)/4),  (float)0.8,(float)0},
-        //{(float)((-3.14*5)/6),  (float)0.9,(float)0},
-        //{(float)((3.14*7)/8),   (float)1.0,(float)0},
-        //{(float)((3.14*2)/3),   (float)1.1,(float)0},
 
     };
 
@@ -118,6 +107,8 @@ static public class PanelData
             numPatStack[iLoop] = -1;
         }
         speed_numPatNowPos = -1;
+
+        delPanelFlg = false;
     }
 
     //PanelData作成処理
@@ -190,4 +181,15 @@ static public class PanelData
         }
 
     }
+
+    public static void SetdelPanelFlg()
+    {
+        delPanelFlg = true;
+    }
+
+    public static bool GetdelPanelFlg()
+    {
+        return delPanelFlg;
+    }
+
 }

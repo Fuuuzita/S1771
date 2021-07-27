@@ -55,7 +55,12 @@ public class MovePanelConf : MonoBehaviour
             }
         }
 
-        if(delFlg)
+        if(PanelData.GetdelPanelFlg())
+        {
+            delFlg = true;
+        }
+
+        if (delFlg)
         {
             // é©ï™é©êgÇè¡Ç∑
             Destroy(gameObject);

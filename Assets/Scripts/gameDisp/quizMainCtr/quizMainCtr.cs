@@ -13,9 +13,7 @@ public class quizMainCtr : MonoBehaviour
     static int[] StackChosenPanel = new int[PanelData.speedPatTableNum];
     static int[] Stackrandom11num4Ans = new int[PanelData.speedPatTableNum];
 
-    //static int prefabDispCount = 1;
-    //static int prefabDispTimer = 0;
-
+    static int NextQuizTimer = 0;   //対応が雑になってきた
 
     // Start is called before the first frame update
     void Start()
@@ -44,11 +42,40 @@ public class quizMainCtr : MonoBehaviour
 
         GetComponent<AnswerTouchEvent>().AnswerTouchEventInit();
         GetComponent<CheckAnswerCtrl>().CheckAnswerCtrlInit();
+
+        //現在問題数を進める
+        NowQuizCount.NextCount();
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    void FixedUpdate()
+    {
+        //だいぶ適当になってきた
+        //解答が終わったときにこのフラグが立つはずだから
+        //このフラグを見る
+        if (PanelData.GetdelPanelFlg())
+        {
+            //最後の問題まで来たら終わり
+            if((quizData.quizDataBufNum　-1) != quizData.GetquizDataNowPos())
+            {
+                //次の問題へ
+                //ちょっと待って初期化する
+                if (NextQuizTimer > 100)
+                {
+                    quizData.NextquizDataNowPos();
+                    quizMainCtrInitSequence();
+                    NextQuizTimer = 0;
+                }
+                else
+                {
+                    NextQuizTimer++;
+                }
+            }
+        }
     }
 
     void LogquizDataDisp()
