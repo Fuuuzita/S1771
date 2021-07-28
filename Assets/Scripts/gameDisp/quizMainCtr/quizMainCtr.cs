@@ -14,12 +14,17 @@ public class quizMainCtr : MonoBehaviour
     static int[] Stackrandom11num4Ans = new int[PanelData.speedPatTableNum];
 
     static int NextQuizTimer = 0;   //対応が雑になってきた
+    //クリアパネルを追加する
+    public GameObject clearCanvas;
+    //クリアパネル呼び出しフラグ
+    static bool clearCanvasDispFlg = true;
 
     // Start is called before the first frame update
     void Start()
     {
         //quizData初期化
         quizData.quizDataInit();
+        NowQuizCount.ClearCount();
 
         //quizData作成　ここではないことはわかる
         quizData.quizDataMake();
@@ -27,6 +32,8 @@ public class quizMainCtr : MonoBehaviour
         LogquizDataDisp();
 
         quizMainCtrInitSequence();
+
+        clearCanvasDispFlg = true;
     }
 
     public void quizMainCtrInitSequence()
@@ -60,7 +67,8 @@ public class quizMainCtr : MonoBehaviour
         if (PanelData.GetdelPanelFlg())
         {
             //最後の問題まで来たら終わり
-            if((quizData.quizDataBufNum　-1) != quizData.GetquizDataNowPos())
+//            if((quizData.quizDataBufNum　-1) != quizData.GetquizDataNowPos())
+            if(2 != quizData.GetquizDataNowPos())
             {
                 //次の問題へ
                 //ちょっと待って初期化する
@@ -73,6 +81,15 @@ public class quizMainCtr : MonoBehaviour
                 else
                 {
                     NextQuizTimer++;
+                }
+            }
+            else
+            {
+                if(clearCanvasDispFlg)
+                {
+                    clearCanvasDispFlg = false;
+                    //ClearPanelを表示するよー
+                    Invoke("DispClearPanelSend", 2);
                 }
             }
         }
@@ -91,6 +108,13 @@ public class quizMainCtr : MonoBehaviour
             Debug.Log("quizData.quizDataBuf[" + i + ", 3])：" + quizData.quizDataBuf[i, 3]);  //答え3
             Debug.Log("quizData.quizDataBuf[" + i + ", 4])：" + quizData.quizDataBuf[i, 4]);  //答え4
         }
+    }
+
+    void DispClearPanelSend()
+    {
+        //クリアパネルにメッセージを送信する
+        clearCanvas.SendMessage("DispClearPanel");
+
     }
 
 }

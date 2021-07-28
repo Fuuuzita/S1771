@@ -12,7 +12,6 @@ public class NowQuizCount : MonoBehaviour
 
 	void Start()
 	{ // 最初に行う
-		value = startCount;// カウンターをリセット
 	}
 
 	void Update()
@@ -24,5 +23,11 @@ public class NowQuizCount : MonoBehaviour
 	public static void NextCount()
 	{
 		value++;
+		Debug.Log("value  "+ value);
+	}
+
+	public static void ClearCount()
+	{
+		value = 0;
 	}
 }

@@ -17,6 +17,7 @@ public class PanelControler : MonoBehaviour
 
     static int prefabDispCount = 0;
     static int prefabDispTimer = 0;
+    static int sortingLayer = 0;
 
 
     // Start is called before the first frame update
@@ -41,6 +42,8 @@ public class PanelControler : MonoBehaviour
         prefabDispCount = 0;
 
         prefabDispTimer = 0;
+
+        sortingLayer = 0;
     }
 
     void FixedUpdate()
@@ -111,6 +114,9 @@ public class PanelControler : MonoBehaviour
         newGameObject.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         newGameObject.transform.position = newPos;
         newGameObject.GetComponent<Renderer>().material.color = ColorSelect(ColorNum);
+        newGameObject.GetComponent<Renderer>().sortingOrder = sortingLayer;
+        sortingLayer++;
+
     }
 
     //プレハブの選択
