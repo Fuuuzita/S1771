@@ -939,6 +939,7 @@ GameObject:
   - component: {fileID: 663711898}
   - component: {fileID: 663711901}
   - component: {fileID: 663711902}
+  - component: {fileID: 663711903}
   m_Layer: 0
   m_Name: PanelMain
   m_TagString: Untagged
@@ -1031,6 +1032,20 @@ MonoBehaviour:
   newPrefab7: {fileID: 3107255106889807718, guid: 3d1b52b7ef14abd469633e00470f43b6, type: 3}
   newPrefab8: {fileID: 6745868617773381304, guid: 635caae8d9f56d043af2b787ef359792, type: 3}
   newPrefab9: {fileID: 7634343084384083964, guid: 8bf2a8280a4f1d648a55eec4f13da558, type: 3}
+--- !u!114 &663711903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663711897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f801c6441264b54caf9fe4beccb2326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  appId: ca-app-pub-3346382919653489~5745472779
+  adUnitId: ca-app-pub-3346382919653489/6031223866
 --- !u!1 &742291459
 GameObject:
   m_ObjectHideFlags: 0
