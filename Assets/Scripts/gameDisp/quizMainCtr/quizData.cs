@@ -6,8 +6,42 @@ static public class quizData
 {
     // quizDataTable の要素数
     public static readonly int quizDataTBLNum = 384;
-    // quizDataTable 問題の要素番号
-    public static readonly int quizDataTBLPara = 0;
+	//種別ごとの要素数
+	static KindEra kindEraYousoNum = new KindEra(
+		11, // 縄文・弥生・古墳時代
+		17, // 飛鳥時代
+		11, // 奈良時代
+		34, // 平安時代
+		16, // 鎌倉時代
+		27, // 室町時代
+		22, // 安土桃山時代
+		71, // 江戸時代
+		69, // 明治
+		24, // 大正
+		42, // 昭和
+		12, // 平成
+		28  // その他近代
+		);
+	//種別ごとのquizDataTableの要素番号
+	static KindEra kindEraquizDataPoint = new KindEra(
+		0,      // 縄文・弥生・古墳時代
+		11,     // 飛鳥時代
+		28,     // 奈良時代
+		39,     // 平安時代
+		73,     // 鎌倉時代
+		89,     // 室町時代
+		116,    // 安土桃山時代
+		138,    // 江戸時代
+		209,    // 明治
+		278,    // 大正
+		302,    // 昭和
+		344,    // 平成
+		356     // その他近代
+		);
+
+
+	// quizDataTable 問題の要素番号
+	public static readonly int quizDataTBLPara = 0;
     // quizDataTable こたえの要素番号
     public static readonly int quizDataTBLAns1Para = 1;
     public static readonly int quizDataTBLAns2Para = 2;
@@ -24,7 +58,14 @@ static public class quizData
 	// quiz選択のスタック
 	static int[] StackChosenQuiz = new int[quizDataBufNum];
 
-	static KindEra kindera = new KindEra();
+	//設定済み時代設定
+	static KindEra Usekindera = new KindEra();
+
+	//使用するquizData
+	private static string[, ] UsequizDataTable = new string[quizDataTBLNum, 6];
+
+	private static int UsequizDataTableNum;
+
 	//定数
 	// quizDataTable
 	private static readonly string[,] quizDataTable =
@@ -470,10 +511,10 @@ static public class quizData
 		int i;					//Loop変数
 
 		//スタックに重複なくデータquiz番号を入れる
-		while (-1 == StackChosenQuiz[quizData.quizDataBufNum - 1])
+		while (-1 == StackChosenQuiz[quizDataBufNum - 1])
 		{
 			//乱数を取得 0～クイズ全体数
-			RandomDataQuiz = Random.Range(0, quizData.quizDataTBLNum);
+			RandomDataQuiz = Random.Range(0, UsequizDataTableNum);
 			//重複チェック
 			for (i = 0; i < quizDataBufNum; i++)
 			{
@@ -482,11 +523,11 @@ static public class quizData
 					//未設定データ
 					StackChosenQuiz[i] = RandomDataQuiz;
 					//ついでにquizDataBufのデータも設定してみる
-					quizDataBuf[i, 0] = quizDataTable[RandomDataQuiz, 0];  //問題
-					quizDataBuf[i, 1] = quizDataTable[RandomDataQuiz, 1];  //答え1
-					quizDataBuf[i, 2] = quizDataTable[RandomDataQuiz, 2];  //答え2
-					quizDataBuf[i, 3] = quizDataTable[RandomDataQuiz, 3];  //答え3
-					quizDataBuf[i, 4] = quizDataTable[RandomDataQuiz, 4];  //答え4
+					quizDataBuf[i, 0] = UsequizDataTable[RandomDataQuiz, 0];  //問題
+					quizDataBuf[i, 1] = UsequizDataTable[RandomDataQuiz, 1];  //答え1
+					quizDataBuf[i, 2] = UsequizDataTable[RandomDataQuiz, 2];  //答え2
+					quizDataBuf[i, 3] = UsequizDataTable[RandomDataQuiz, 3];  //答え3
+					quizDataBuf[i, 4] = UsequizDataTable[RandomDataQuiz, 4];  //答え4
 					break;
 				}
 				else if (StackChosenQuiz[i] == RandomDataQuiz)
@@ -521,13 +562,107 @@ static public class quizData
 	// 種別の現在設定値を設定
 	public static void SetKindEra(KindEra kd)
     {
-		kindera = kd;
+		Usekindera = kd;
 	}
 
 	// 種別の現在設定値を取得
 	public static KindEra GetKindEra()
 	{
-		return kindera;
+		return Usekindera;
 	}
+
+	public static void MakeUsequizDataTable()
+    {
+		//テーブル数初期化
+		UsequizDataTableNum = 0;
+
+		if (Usekindera.Jomon == 1)
+        {
+			MakeOneUsequizDataTable(kindEraYousoNum.Jomon, kindEraquizDataPoint.Jomon);
+		}
+
+		if (Usekindera.Asuka == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Asuka, kindEraquizDataPoint.Asuka);
+		}
+
+		if (Usekindera.Nara == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Nara, kindEraquizDataPoint.Nara);
+		}
+
+		if (Usekindera.Heian == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Heian, kindEraquizDataPoint.Heian);
+		}
+
+		if (Usekindera.Kamakura == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Kamakura, kindEraquizDataPoint.Kamakura);
+		}
+
+		if (Usekindera.Muromati == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Muromati, kindEraquizDataPoint.Muromati);
+		}
+
+		if (Usekindera.Aduttimomoyama == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Aduttimomoyama, kindEraquizDataPoint.Aduttimomoyama);
+		}
+
+		if (Usekindera.Edo == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Edo, kindEraquizDataPoint.Edo);
+		}
+
+		if (Usekindera.Meiji == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Meiji, kindEraquizDataPoint.Meiji);
+		}
+
+		if (Usekindera.Taisho == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Taisho, kindEraquizDataPoint.Taisho);
+		}
+
+		if (Usekindera.Showa == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Showa, kindEraquizDataPoint.Showa);
+		}
+
+		if (Usekindera.Heisei == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Heisei, kindEraquizDataPoint.Heisei);
+		}
+
+		if (Usekindera.Kindai == 1)
+		{
+			MakeOneUsequizDataTable(kindEraYousoNum.Kindai, kindEraquizDataPoint.Kindai);
+		}
+	}
+
+	public static void MakeOneUsequizDataTable(int YousoNum,int YousoPoint)
+    {
+		for(int iLoop = 0; iLoop < YousoNum; iLoop++)
+        {
+			UsequizDataTable[UsequizDataTableNum + iLoop, 0] = quizDataTable[YousoPoint + iLoop, 0];
+			UsequizDataTable[UsequizDataTableNum + iLoop, 1] = quizDataTable[YousoPoint + iLoop, 1];
+			UsequizDataTable[UsequizDataTableNum + iLoop, 2] = quizDataTable[YousoPoint + iLoop, 2];
+			UsequizDataTable[UsequizDataTableNum + iLoop, 3] = quizDataTable[YousoPoint + iLoop, 3];
+			UsequizDataTable[UsequizDataTableNum + iLoop, 4] = quizDataTable[YousoPoint + iLoop, 4];
+			UsequizDataTable[UsequizDataTableNum + iLoop, 5] = quizDataTable[YousoPoint + iLoop, 5];
+			Debug.Log(UsequizDataTableNum+ iLoop + " : "
+				+ UsequizDataTable[UsequizDataTableNum + iLoop, 0] + " "
+				+ UsequizDataTable[UsequizDataTableNum + iLoop, 1] + " "
+				+ UsequizDataTable[UsequizDataTableNum + iLoop, 2] + " "
+				+ UsequizDataTable[UsequizDataTableNum + iLoop, 3] + " "
+				+ UsequizDataTable[UsequizDataTableNum + iLoop, 4] + " "
+				+ UsequizDataTable[UsequizDataTableNum + iLoop, 5] + " "
+				);
+		}
+		UsequizDataTableNum += YousoNum;
+	} 
+
 
 }

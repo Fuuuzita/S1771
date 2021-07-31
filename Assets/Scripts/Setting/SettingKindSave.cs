@@ -50,137 +50,170 @@ public class SettingKindSave : MonoBehaviour
 
     public void SaveButtonDown()
     {
-        int Savedata;
-        if (Jomon.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Jomon", Savedata);
+        KindEra kindEra = new KindEra();
+        kindEra.Jomon = (Jomon.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Asuka = (Asuka.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Nara = (Nara.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Heian = (Heian.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Kamakura = (Kamakura.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Muromati = (Muromati.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Aduttimomoyama = (Aduttimomoyama.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Edo = (Edo.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Meiji = (Meiji.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Taisho = (Taisho.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Showa = (Showa.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Heisei = (Heisei.GetComponent<Toggle>().isOn ? 1 : 0);
+        kindEra.Kindai = (Kindai.GetComponent<Toggle>().isOn ? 1 : 0);
 
-        if (Asuka.GetComponent<Toggle>().isOn)
+        if(kindEra.KindEraNullChechk())
         {
-            Savedata = 1;
+            PlayerPrefs.SetInt("Jomon", kindEra.Jomon);
+            PlayerPrefs.SetInt("Asuka", kindEra.Asuka);
+            PlayerPrefs.SetInt("Nara", kindEra.Nara);
+            PlayerPrefs.SetInt("Heian", kindEra.Heian);
+            PlayerPrefs.SetInt("Kamakura", kindEra.Kamakura);
+            PlayerPrefs.SetInt("Muromati", kindEra.Muromati);
+            PlayerPrefs.SetInt("Aduttimomoyama", kindEra.Aduttimomoyama);
+            PlayerPrefs.SetInt("Edo", kindEra.Edo);
+            PlayerPrefs.SetInt("Meiji", kindEra.Meiji);
+            PlayerPrefs.SetInt("Taisho", kindEra.Taisho);
+            PlayerPrefs.SetInt("Showa", kindEra.Showa);
+            PlayerPrefs.SetInt("Heisei", kindEra.Heisei);
+            PlayerPrefs.SetInt("Kindai", kindEra.Kindai);
+            PlayerPrefs.Save();
         }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Asuka", Savedata);
 
-        if (Nara.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Nara", Savedata);
+        //int Savedata;
+        //if (Jomon.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Jomon", Savedata);
 
-        if (Heian.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Heian", Savedata);
+        //if (Asuka.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Asuka", Savedata);
 
-        if (Kamakura.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Kamakura", Savedata);
+        //if (Nara.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Nara", Savedata);
 
-        if (Muromati.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Muromati", Savedata);
+        //if (Heian.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Heian", Savedata);
 
-        if (Aduttimomoyama.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Aduttimomoyama", Savedata);
+        //if (Kamakura.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Kamakura", Savedata);
 
-        if (Edo.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Edo", Savedata);
+        //if (Muromati.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Muromati", Savedata);
 
-        if (Meiji.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Meiji", Savedata);
+        //if (Aduttimomoyama.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Aduttimomoyama", Savedata);
 
-        if (Taisho.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Taisho", Savedata);
+        //if (Edo.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Edo", Savedata);
 
-        if (Showa.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Showa", Savedata);
+        //if (Meiji.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Meiji", Savedata);
 
-        if (Heisei.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Heisei", Savedata);
+        //if (Taisho.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Taisho", Savedata);
 
-        if (Kindai.GetComponent<Toggle>().isOn)
-        {
-            Savedata = 1;
-        }
-        else
-        {
-            Savedata = 0;
-        }
-        PlayerPrefs.SetInt("Kindai", Savedata);
-        PlayerPrefs.Save();
+        //if (Showa.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Showa", Savedata);
+
+        //if (Heisei.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Heisei", Savedata);
+
+        //if (Kindai.GetComponent<Toggle>().isOn)
+        //{
+        //    Savedata = 1;
+        //}
+        //else
+        //{
+        //    Savedata = 0;
+        //}
+        //PlayerPrefs.SetInt("Kindai", Savedata);
+        //PlayerPrefs.Save();
 
     }
 

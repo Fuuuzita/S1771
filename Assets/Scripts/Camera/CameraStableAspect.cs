@@ -61,8 +61,6 @@ public class CameraStableAspect : MonoBehaviour
             float bgScale_w = target_w / screen_w;
             float camHeight = target_h / (screen_h * bgScale_w);
             refCamera.rect = new Rect( 0f, (1f-camHeight)*0.5f, 1f, camHeight);
-            Debug.Log("bgScale：" + bgScale_w);  //問題
-            Debug.Log("camHeight：" + camHeight);  //問題
         }
         // 横に長い
         else
@@ -74,12 +72,9 @@ public class CameraStableAspect : MonoBehaviour
             float bgScale_h = target_h / screen_h;
             float camWidth = target_w / (screen_w * bgScale_h);
             refCamera.rect = new Rect( (1f-camWidth)*0.5f, 0f, camWidth, 1f);
-            Debug.Log("bgScale：" + bgScale);  //問題
-            Debug.Log("camWidth：" + camWidth);  //問題
         }
 
         refCamera.orthographicSize = orthographicSize;
-        Debug.Log("orthographicSize：" + orthographicSize);  //問題
 
         m_width = Screen.width;
         m_height = Screen.height;

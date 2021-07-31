@@ -22,7 +22,8 @@ public class SettingKindLoad : MonoBehaviour
         kindEra.Heisei = PlayerPrefs.GetInt("Heisei", 1);                   // ïΩê¨
         kindEra.Kindai = PlayerPrefs.GetInt("Kindai", 1);                   // ÇªÇÃëºãﬂë„
         quizData.SetKindEra(kindEra);
-        DispLogEra(kindEra);
+//        DispLogEra(kindEra);
+        quizData.MakeUsequizDataTable();
     }
 
     // Update is called once per frame
