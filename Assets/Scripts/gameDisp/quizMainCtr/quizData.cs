@@ -66,6 +66,12 @@ static public class quizData
 
 	private static int UsequizDataTableNum;
 
+	//使用するquizData設定済みフラグ
+	private static bool IsUsequizDataTableSet = false;
+
+	//こたえ
+	private static string NowAnswer;
+
 	//定数
 	// quizDataTable
 	private static readonly string[,] quizDataTable =
@@ -472,6 +478,16 @@ static public class quizData
 		{
 			quizDataNowPos = quizDataBufNum - 1;
 		}
+
+		NowAnswer = quizDataBuf[quizDataNowPos, quizDataTBLAns1Para]
+			+ quizDataBuf[quizDataNowPos, quizDataTBLAns2Para]
+			+ quizDataBuf[quizDataNowPos, quizDataTBLAns3Para]
+			+ quizDataBuf[quizDataNowPos, quizDataTBLAns4Para];
+	}
+
+	public static string GetNowAnswer()
+    {
+		return NowAnswer;
 	}
 
 	//現在quizDataクリア処理
@@ -502,6 +518,16 @@ static public class quizData
 			// quiz選択のスタック -1埋め
 			StackChosenQuiz[iLoop] = -1;
 		}
+
+		//使用データ未設定だったら作る
+		if(IsUsequizDataTableSet == false)
+        {
+			KindEra kindEra = new KindEra();
+			kindEra = KindEraLoad();
+			SetKindEra(kindEra);
+			MakeUsequizDataTable();
+		}
+
 	}
 
 	//quizData作成
@@ -575,6 +601,7 @@ static public class quizData
     {
 		//テーブル数初期化
 		UsequizDataTableNum = 0;
+		IsUsequizDataTableSet = false;
 
 		if (Usekindera.Jomon == 1)
         {
@@ -640,6 +667,8 @@ static public class quizData
 		{
 			MakeOneUsequizDataTable(kindEraYousoNum.Kindai, kindEraquizDataPoint.Kindai);
 		}
+
+		IsUsequizDataTableSet = true;
 	}
 
 	public static void MakeOneUsequizDataTable(int YousoNum,int YousoPoint)
@@ -662,7 +691,30 @@ static public class quizData
 				);
 		}
 		UsequizDataTableNum += YousoNum;
-	} 
+	}
 
+	//ここに記載すべき処理ではない処理
+	//ロード処理とミラーになっているため統一すべき
+	//流用時要検討
+	public static KindEra KindEraLoad()
+    {
+		KindEra kindEra = new KindEra();
+		kindEra.Jomon = PlayerPrefs.GetInt("Jomon", 1);                     // 縄文・弥生・古墳時代
+		kindEra.Asuka = PlayerPrefs.GetInt("Asuka", 1);                     // 飛鳥時代
+		kindEra.Nara = PlayerPrefs.GetInt("Nara", 1);                       // 奈良時代
+		kindEra.Heian = PlayerPrefs.GetInt("Heian", 1);                     // 平安時代
+		kindEra.Kamakura = PlayerPrefs.GetInt("Kamakura", 1);               // 鎌倉時代
+		kindEra.Muromati = PlayerPrefs.GetInt("Muromati", 1);               // 室町時代
+		kindEra.Aduttimomoyama = PlayerPrefs.GetInt("Aduttimomoyama", 1);   // 安土桃山時代
+		kindEra.Edo = PlayerPrefs.GetInt("Edo", 1);                         // 江戸時代
+		kindEra.Meiji = PlayerPrefs.GetInt("Meiji", 1);                     // 明治
+		kindEra.Taisho = PlayerPrefs.GetInt("Taisho", 1);                   // 大正
+		kindEra.Showa = PlayerPrefs.GetInt("Showa", 1);                     // 昭和
+		kindEra.Heisei = PlayerPrefs.GetInt("Heisei", 1);                   // 平成
+		kindEra.Kindai = PlayerPrefs.GetInt("Kindai", 1);                   // その他近代
+
+		return kindEra;
+
+	}
 
 }

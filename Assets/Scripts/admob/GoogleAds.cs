@@ -6,7 +6,7 @@ using GoogleMobileAds.Api;
 public class GoogleAds : MonoBehaviour
 {
 
-    // Use this for initialization
+    // Use this for initialization 
     void Start()
     {
 

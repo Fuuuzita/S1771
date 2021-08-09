@@ -8,19 +8,7 @@ public class SettingKindLoad : MonoBehaviour
     void Start()
     {
         KindEra kindEra = new KindEra();
-        kindEra.Jomon = PlayerPrefs.GetInt("Jomon", 1);                     // “ê•¶E–í¶EŒÃ•­‘ã
-        kindEra.Asuka = PlayerPrefs.GetInt("Asuka", 1);                     // ”ò’¹‘ã
-        kindEra.Nara = PlayerPrefs.GetInt("Nara", 1);                       // “Ş—Ç‘ã
-        kindEra.Heian = PlayerPrefs.GetInt("Heian", 1);                     // •½ˆÀ‘ã
-        kindEra.Kamakura = PlayerPrefs.GetInt("Kamakura", 1);               // Š™‘q‘ã
-        kindEra.Muromati = PlayerPrefs.GetInt("Muromati", 1);               // º’¬‘ã
-        kindEra.Aduttimomoyama = PlayerPrefs.GetInt("Aduttimomoyama", 1);   // ˆÀ“y“R‘ã
-        kindEra.Edo = PlayerPrefs.GetInt("Edo", 1);                         // ]ŒË‘ã
-        kindEra.Meiji = PlayerPrefs.GetInt("Meiji", 1);                     // –¾¡
-        kindEra.Taisho = PlayerPrefs.GetInt("Taisho", 1);                   // ‘å³
-        kindEra.Showa = PlayerPrefs.GetInt("Showa", 1);                     // º˜a
-        kindEra.Heisei = PlayerPrefs.GetInt("Heisei", 1);                   // •½¬
-        kindEra.Kindai = PlayerPrefs.GetInt("Kindai", 1);                   // ‚»‚Ì‘¼‹ß‘ã
+        kindEra = quizData.KindEraLoad();
         quizData.SetKindEra(kindEra);
 //        DispLogEra(kindEra);
         quizData.MakeUsequizDataTable();
