@@ -99,6 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainObjctName: PanelMain
   MainObjctl: {fileID: 0}
+  PushAnimation: {fileID: 3181296932291625640, guid: f4d37ab5b3c7c5a45aea7f8c80d9b002, type: 3}
+  sound: {fileID: 8300000, guid: 08c9e233849e8bd408d8a16b5996c975, type: 3}
 --- !u!61 &5183033949034105411
 BoxCollider2D:
   m_ObjectHideFlags: 0

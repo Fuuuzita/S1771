@@ -34,8 +34,8 @@ public class CheckAnswerCtrl : MonoBehaviour
         AnsPanelObjctl3.GetComponent<AnsweCntrl>().AnsweCntrlInit();
         AnsPanelObjctl4.GetComponent<AnsweCntrl>().AnsweCntrlInit();
 
-        //12秒後にはすべて消す
-        Invoke("CheckAnswerCtrlTimeup", 25);
+        //24秒後にはすべて消す
+        Invoke("CheckAnswerCtrlTimeup", 24);
 
     }
 
@@ -96,7 +96,7 @@ public class CheckAnswerCtrl : MonoBehaviour
         Answer4 = int.Parse(quizData.GetquizDataBuf(4));
 
         newPos.x = 0;
-        newPos.y = -3.5f;
+        newPos.y = -2;
         newPos.z = -5; // 手前に表示
                        //チェック
         if ((AnsPanel1 == Answer1)
@@ -116,6 +116,7 @@ public class CheckAnswerCtrl : MonoBehaviour
             //間違いを表示する処理
             Debug.Log("不正解");
             newGameObject = Instantiate(negative) as GameObject;
+            ResultAnswer.DispAnswer();
         }
         newGameObject.transform.position = newPos;
         //チェックが終わったので、PanelとQuizとAnswerPanelに終わったことを伝える

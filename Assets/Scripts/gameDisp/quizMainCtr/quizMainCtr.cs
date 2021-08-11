@@ -18,10 +18,13 @@ public class quizMainCtr : MonoBehaviour
     public GameObject clearCanvas;
     //クリアパネル呼び出しフラグ
     static bool clearCanvasDispFlg = true;
+    //START
+    public GameObject STARTObject;
 
     // Start is called before the first frame update
     void Start()
     {
+        STARTObjectDisp();
         //quizData初期化
         quizData.quizDataInit();
         NowQuizCount.ClearCount();
@@ -67,7 +70,8 @@ public class quizMainCtr : MonoBehaviour
         if (PanelData.GetdelPanelFlg())
         {
             //最後の問題まで来たら終わり
-//            if((quizData.quizDataBufNum　-1) != quizData.GetquizDataNowPos())
+            //if((quizData.quizDataBufNum　-1) != quizData.GetquizDataNowPos())
+            //2とか使うな
             if(2 != quizData.GetquizDataNowPos())
             {
                 //次の問題へ
@@ -115,6 +119,18 @@ public class quizMainCtr : MonoBehaviour
         //クリアパネルにメッセージを送信する
         clearCanvas.SendMessage("DispClearPanel");
 
+    }
+
+    void STARTObjectDisp()
+    {
+        Vector3 newPos = this.transform.position;
+
+        newPos.x = 6;
+        newPos.y = 1;
+        newPos.z = -5; // 手前に表示
+
+        GameObject newGameObject = Instantiate(STARTObject) as GameObject;
+        newGameObject.transform.position = newPos;
     }
 
 }

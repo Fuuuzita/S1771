@@ -479,6 +479,11 @@ static public class quizData
 			quizDataNowPos = quizDataBufNum - 1;
 		}
 
+		MakeNowAnswer();
+	}
+
+	public static void MakeNowAnswer()
+    {
 		NowAnswer = quizDataBuf[quizDataNowPos, quizDataTBLAns1Para]
 			+ quizDataBuf[quizDataNowPos, quizDataTBLAns2Para]
 			+ quizDataBuf[quizDataNowPos, quizDataTBLAns3Para]
@@ -527,7 +532,6 @@ static public class quizData
 			SetKindEra(kindEra);
 			MakeUsequizDataTable();
 		}
-
 	}
 
 	//quizData作成
@@ -563,6 +567,7 @@ static public class quizData
 				}
 			}
 		}
+		MakeNowAnswer();
 	}
 
 	//QuizDataの取得

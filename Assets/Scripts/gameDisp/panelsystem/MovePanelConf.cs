@@ -17,6 +17,8 @@ public class MovePanelConf : MonoBehaviour
     bool OnlyOnecetime = true;   //一度しかタッチできない
     bool touchFlg = false;       //タッチ検出用
     bool delFlg = false;         //削除フラグ
+    int toutchAnimaCnt = 0;
+    public GameObject PushAnimation;    //押したときのアニメーション
 
     // Start is called before the first frame update
     void Start()
@@ -52,12 +54,20 @@ public class MovePanelConf : MonoBehaviour
                 OnlyOnecetime = false;
                 //削除フラグを設定
                 delFlg = true;
+                PushAnimationDisp();
             }
         }
 
         if(PanelData.GetdelPanelFlg())
         {
-            delFlg = true;
+            if (toutchAnimaCnt < 40) // 0.8h待つことでアニメーションの終了を待つ
+            {
+                toutchAnimaCnt++;
+            }
+            else
+            {
+                delFlg = true;
+            }
         }
 
         if (delFlg)
@@ -76,6 +86,20 @@ public class MovePanelConf : MonoBehaviour
     public void Panel_del_notification()
     {
         delFlg = true;
+    }
+
+    void PushAnimationDisp()
+    {
+        Vector3 newPos = this.transform.position;
+        toutchAnimaCnt = 0; 
+
+        GameObject newGameObject = Instantiate(PushAnimation) as GameObject;
+        newGameObject.transform.position = newPos;
+        newGameObject.GetComponent<Renderer>().material.color
+            = this.gameObject.GetComponent<Renderer>().material.color;
+        newGameObject.GetComponent<Renderer>().sortingOrder 
+            = this.gameObject.GetComponent<Renderer>().sortingOrder;
+
     }
 }
  

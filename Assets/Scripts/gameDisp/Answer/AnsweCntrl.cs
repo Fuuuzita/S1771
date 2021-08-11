@@ -22,12 +22,13 @@ public class AnsweCntrl : MonoBehaviour
     private Sprite sprite1;
     private SpriteRenderer spRenderer;
     private int AnswerNum;      //こたえ
+    public AudioClip sound;
 
     // Start is called before the first frame update
     void Start()
     {
     }
-
+     
     public void AnsweCntrlInit()
     {
         spRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -45,9 +46,12 @@ public class AnsweCntrl : MonoBehaviour
         {
             if(OverFlg)
             {
+                AudioSource audio = GetComponent<AudioSource>();
                 spRenderer.sprite = AnsPanel;
                 OverFlg = false;
                 AnsPanel = null;
+                // 音（sound）を一度だけ（PlayOneShot）再生する
+                audio.PlayOneShot(sound);
             }
             else
             {
