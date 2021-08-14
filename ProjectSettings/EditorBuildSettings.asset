@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Setting.unity
     guid: a70b1832bdb19d54baba7b200beb3351
+  - enabled: 1
+    path: Assets/Scenes/QuizViewMenu.unity
+    guid: 70ffeaab99bc3b2499812aadfe3a314d
+  - enabled: 1
+    path: Assets/Scenes/QuizView.unity
+    guid: a599f9312ab50604192981b392bdf952
   m_configObjects: {}

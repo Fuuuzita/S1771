@@ -39,7 +39,6 @@ public class SettingKindSave : MonoBehaviour
         Heisei.GetComponent<Toggle>().isOn = (kindEra.Heisei == 1);
         Kindai.GetComponent<Toggle>().isOn = (kindEra.Kindai == 1);
         DispLogEra(kindEra);
-
     }
 
     // Update is called once per frame

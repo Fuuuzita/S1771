@@ -174,22 +174,34 @@ public class PanelControler : MonoBehaviour
                 retColor = Color.white;
                 break;
             case 1:
-                retColor = Color.blue;
+//                retColor = Color.blue;
+                Color newColor1 = new Color(0.75f, 0.75f, 1.00f, 1.00f);
+                retColor = newColor1;
                 break;
             case 2:
-                retColor = Color.cyan;
+//                retColor = Color.cyan;
+                Color newColor2 = new Color(0.75f, 1.00f, 1.00f, 1.00f);
+                retColor = newColor2;
                 break;
             case 3:
-                retColor = Color.green;
+//                retColor = Color.green;
+                Color newColor3 = new Color(0.75f, 1.00f, 0.75f, 1.00f);
+                retColor = newColor3;
                 break;
             case 4:
-                retColor = Color.magenta;
+//                retColor = Color.magenta;
+                Color newColor4 = new Color(1.00f, 0.75f, 1.00f, 1.00f);
+                retColor = newColor4;
                 break;
             case 5:
-                retColor = Color.red;
+//                retColor = Color.red;
+                Color newColor5 = new Color(1.00f, 0.75f, 0.75f, 1.00f);
+                retColor = newColor5;
                 break;
             case 6:
-                retColor = Color.yellow;
+//                retColor = Color.yellow;
+                Color newColor6 = new Color(0.98f, 1.00f, 0.60f, 1.00f);
+                retColor = newColor6;
                 break;
             default:
                 retColor = Color.white;

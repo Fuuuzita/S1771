@@ -7,7 +7,7 @@ static public class quizData
     // quizDataTable の要素数
     public static readonly int quizDataTBLNum = 384;
 	//種別ごとの要素数
-	static KindEra kindEraYousoNum = new KindEra(
+	public static KindEra kindEraYousoNum = new KindEra(
 		11, // 縄文・弥生・古墳時代
 		17, // 飛鳥時代
 		11, // 奈良時代
@@ -23,7 +23,7 @@ static public class quizData
 		28  // その他近代
 		);
 	//種別ごとのquizDataTableの要素番号
-	static KindEra kindEraquizDataPoint = new KindEra(
+	public static KindEra kindEraquizDataPoint = new KindEra(
 		0,      // 縄文・弥生・古墳時代
 		11,     // 飛鳥時代
 		28,     // 奈良時代
@@ -47,8 +47,9 @@ static public class quizData
     public static readonly int quizDataTBLAns2Para = 2;
     public static readonly int quizDataTBLAns3Para = 3;
     public static readonly int quizDataTBLAns4Para = 4;
-    // quizDataBuff の要素数
-    public static readonly int quizDataBufNum = 10;
+	public static readonly int quizDataTBLAnsEra = 5;
+	// quizDataBuff の要素数
+	public static readonly int quizDataBufNum = 10;
 
     //static変数
     //取得quizデータ
@@ -74,7 +75,7 @@ static public class quizData
 
 	//定数
 	// quizDataTable
-	private static readonly string[,] quizDataTable =
+	public static readonly string[,] quizDataTable =
 	{
 		//問題,答え1,答え2,答え3,答え4,年代
 		{"相沢忠弘が岩宿遺跡を発見","1","9","4","6","縄文・弥生・古墳時代"},

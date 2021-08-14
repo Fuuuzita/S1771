@@ -70,9 +70,7 @@ public class quizMainCtr : MonoBehaviour
         if (PanelData.GetdelPanelFlg())
         {
             //最後の問題まで来たら終わり
-            //if((quizData.quizDataBufNum　-1) != quizData.GetquizDataNowPos())
-            //2とか使うな
-            if(2 != quizData.GetquizDataNowPos())
+            if((quizData.quizDataBufNum　-1) != quizData.GetquizDataNowPos())
             {
                 //次の問題へ
                 //ちょっと待って初期化する

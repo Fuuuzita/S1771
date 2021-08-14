@@ -28,17 +28,17 @@ static public class PanelData
     public static readonly float[,] speedPatTable =
     {
         //rad       positionx   positiony
-        {(float)(3.14/3),       (float)(-4.75),   (float)(-1.05) },
-        {(float)(3.14/8),       (float)(-4.75),   (float)(2.25) },
-        {(float)(-3.14/6),      (float)(-4.75),   (float)(4.25) },
-        {(float)(-3.14/4),      (float)(-4.00),   (float)(6.00) },
+        {(float)(3.14/4),       (float)(-4.00),   (float)(-1.05) },
+        {(float)(3.14/8),       (float)(-4.75),   (float)(1.25) },
+        {(float)(-3.14/6),      (float)(-4.75),   (float)(3.00) },
+        {(float)(-3.14/4),      (float)(-4.00),   (float)(4.60) },
         {(float)(-3.14/3),      (float)(-2.00),   (float)(6.00) },
         {(float)(-3.14/2),      (float)(0.00),   (float)(6.00) },
         {(float)((-3.14*2)/3),  (float)(2.00),   (float)(6.00) },
-        {(float)((-3.14*3)/4),  (float)(4.00),   (float)(6.00) },
-        {(float)((-3.14*5)/6),  (float)(4.75),   (float)(4.25) },
-        {(float)((3.14*7)/8),   (float)(4.75),   (float)(2.25) },
-        {(float)((3.14*2)/3),   (float)(4.75),   (float)(-1.05) }
+        {(float)((-3.14*3)/4),  (float)(4.00),   (float)(4.60) },
+        {(float)((-3.14*5)/6),  (float)(4.75),   (float)(3.00) },
+        {(float)((3.14*7)/8),   (float)(4.75),   (float)(1.25) },
+        {(float)((3.14*3)/4),   (float)(4.00),   (float)(-1.05) }
 
     };
 

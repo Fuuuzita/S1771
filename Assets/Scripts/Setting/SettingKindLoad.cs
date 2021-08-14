@@ -9,7 +9,7 @@ public class SettingKindLoad : MonoBehaviour
     {
         KindEra kindEra = new KindEra();
         kindEra = quizData.KindEraLoad();
-        bquizData.SetKindEra(kindEra);
+        quizData.SetKindEra(kindEra);
 //        DispLogEra(kindEra);
         quizData.MakeUsequizDataTable();
     }
